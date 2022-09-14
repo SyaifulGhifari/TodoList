@@ -1,10 +1,15 @@
 import React from 'react';
+import Logo from '../components/Logo';
+import Todo from '../components/Todo';
 
 export default function Home() {
   return (
     <div>
-      <div>home</div>
-      <h2>hallo</h2>
+      <div className='container mx-auto mt-20'>
+        <Logo />
+        <Todo />
+        <Todo />
+      </div>
     </div>
   );
 }
