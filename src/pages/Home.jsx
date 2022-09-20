@@ -15,14 +15,35 @@ export default function Home() {
     setTodos(tmp);
   };
 
+  const addtask = (data) => {
+    const id = todos.length;
+    const newtask = {
+      id: id + 1,
+      task: data,
+    };
+    setTodos((current) => [...current, newtask]);
+  };
+
+  const editTask = (id, task) => {
+    const tmp = todos.map((v) => {
+      if (v.id === id) {
+        return { ...v, task: task };
+      }
+      return v;
+    });
+    setTodos(tmp);
+  };
+
   return (
     <div>
       <div className='container mx-auto mt-20'>
         <Logo />
         {todos.map((item) => {
-          return <Todo key={item.id} todo={item} del={deleteTask} />;
+          return (
+            <Todo key={item.id} todo={item} del={deleteTask} edit={editTask} />
+          );
         })}
-        <Form />
+        <Form add={addtask} />
       </div>
     </div>
   );
